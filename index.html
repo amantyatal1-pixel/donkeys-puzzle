@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Donkeys Puzzle</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<div class="container">
+
+    <h1>🧩 DONKEYS PUZZLE</h1>
+    <p class="subtitle">Class 12 Computer Project</p>
+
+    <div class="controls">
+
+        <div class="file-box">
+            <label for="imageInput">🖼️ Choose Image</label>
+            <input type="file" id="imageInput" accept="image/*">
+        </div>
+
+        <select id="difficulty">
+            <option value="4">4 × 4</option>
+            <option value="6">6 × 6</option>
+            <option value="8">8 × 8</option>
+            <option value="10">10 × 10</option>
+            <option value="12" selected>12 × 12</option>
+        </select>
+
+        <button id="startBtn">START</button>
+
+    </div>
+
+    <div class="stats">
+        <div>
+            <small>TIME</small>
+            <strong id="time">00:00</strong>
+        </div>
+
+        <div>
+            <small>MOVES</small>
+            <strong id="moves">0</strong>
+        </div>
+
+        <div>
+            <small>PUZZLE</small>
+            <strong id="sizeText">12 × 12</strong>
+        </div>
+    </div>
+
+    <div id="message">
+        Choose an image and press START
+    </div>
+
+    <div id="puzzle"></div>
+
+    <div class="buttons">
+        <button id="doneBtn">✅ DONE</button>
+        <button id="tryBtn">🔄 TRY AGAIN</button>
+    </div>
+
+</div>
+
+
+<!-- CELEBRATION -->
+
+<div id="celebration">
+
+    <div class="celebration-box">
+
+        <div class="big-donkey">🫏</div>
+
+        <h2>🎉 CONGRATULATIONS! 🎉</h2>
+
+        <h3>DONKEYS! 🫏🥳🫏</h3>
+
+        <p>You completed the puzzle!</p>
+
+        <div class="celebration-donkeys">
+            🫏 🫏 🫏 🫏 🫏
+        </div>
+
+        <button id="playAgainBtn">
+            🔄 PLAY AGAIN
+        </button>
+
+    </div>
+
+</div>
+
+
+<!-- POPUP DONKEYS -->
+
+<div id="donkeyContainer"></div>
+
+<!-- CONFETTI -->
+
+<div id="confetti"></div>
+
+
+<script src="script.js"></script>
+
+</body>
+</html>

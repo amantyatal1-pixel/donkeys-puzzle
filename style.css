@@ -1,0 +1,570 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    min-height: 100vh;
+
+    font-family: Arial, sans-serif;
+
+    background: linear-gradient(
+        135deg,
+        #141e30,
+        #243b55
+    );
+
+    color: white;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    padding: 15px;
+
+    overflow-x: hidden;
+}
+
+.container {
+    width: 100%;
+    max-width: 850px;
+
+    background: rgba(0, 0, 0, 0.45);
+
+    padding: 22px;
+
+    border-radius: 18px;
+
+    text-align: center;
+
+    box-shadow: 0 15px 40px rgba(0,0,0,0.5);
+}
+
+h1 {
+    font-size: 30px;
+    margin-bottom: 5px;
+}
+
+.subtitle {
+    color: #bbb;
+    margin-bottom: 20px;
+}
+
+
+/* CONTROLS */
+
+.controls {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    flex-wrap: wrap;
+
+    gap: 10px;
+
+    margin-bottom: 15px;
+}
+
+.file-box {
+    background: white;
+
+    color: #222;
+
+    padding: 9px 12px;
+
+    border-radius: 7px;
+}
+
+.file-box label {
+    font-weight: bold;
+    cursor: pointer;
+}
+
+input[type="file"] {
+    max-width: 180px;
+}
+
+select,
+button {
+    border: none;
+
+    border-radius: 7px;
+
+    padding: 10px 16px;
+
+    font-weight: bold;
+
+    cursor: pointer;
+}
+
+select {
+    background: white;
+}
+
+button {
+    background: #ffd43b;
+    color: #111;
+
+    touch-action: manipulation;
+}
+
+button:hover {
+    transform: translateY(-2px);
+}
+
+
+/* STATS */
+
+.stats {
+    display: flex;
+    justify-content: center;
+
+    gap: 12px;
+
+    margin-bottom: 12px;
+}
+
+.stats div {
+    min-width: 100px;
+
+    padding: 8px 12px;
+
+    background: rgba(255,255,255,0.08);
+
+    border-radius: 8px;
+}
+
+.stats small {
+    display: block;
+
+    color: #aaa;
+
+    font-size: 10px;
+}
+
+.stats strong {
+    display: block;
+
+    margin-top: 3px;
+
+    font-size: 17px;
+}
+
+
+/* MESSAGE */
+
+#message {
+    min-height: 25px;
+
+    margin-bottom: 8px;
+
+    color: #ffe066;
+
+    font-weight: bold;
+}
+
+
+/* PUZZLE */
+
+#puzzle {
+    width: min(82vw, 650px);
+
+    aspect-ratio: 1 / 1;
+
+    margin: auto;
+
+    display: grid;
+
+    gap: 1px;
+
+    padding: 1px;
+
+    background: #000;
+
+    border: 3px solid #777;
+
+    border-radius: 6px;
+
+    overflow: hidden;
+
+    touch-action: manipulation;
+}
+
+.tile {
+    width: 100%;
+    height: 100%;
+
+    background-repeat: no-repeat;
+
+    border: 0.5px solid rgba(255,255,255,0.2);
+
+    cursor: pointer;
+
+    user-select: none;
+
+    -webkit-user-select: none;
+
+    touch-action: manipulation;
+}
+
+.tile:hover {
+    filter: brightness(1.2);
+}
+
+.selected {
+    outline: 3px solid #ffd43b;
+
+    z-index: 5;
+
+    filter: brightness(1.35);
+}
+
+
+/* BUTTONS */
+
+.buttons {
+    position: relative;
+
+    z-index: 20;
+
+    display: flex;
+
+    justify-content: center;
+
+    gap: 12px;
+
+    margin-top: 16px;
+}
+
+#doneBtn {
+    background: #4ade80;
+}
+
+#tryBtn {
+    background: white;
+}
+
+
+/* =================================
+   CELEBRATION SCREEN
+================================= */
+
+#celebration {
+    position: fixed;
+
+    inset: 0;
+
+    z-index: 1000;
+
+    display: none;
+
+    justify-content: center;
+    align-items: center;
+
+    background: rgba(20, 10, 40, 0.92);
+
+    backdrop-filter: blur(6px);
+
+    overflow: hidden;
+}
+
+#celebration.show {
+    display: flex;
+
+    animation: celebrationAppear 0.5s ease;
+}
+
+
+.celebration-box {
+    position: relative;
+
+    z-index: 1002;
+
+    width: min(90%, 550px);
+
+    padding: 35px 20px;
+
+    text-align: center;
+
+    background: linear-gradient(
+        135deg,
+        #fff176,
+        #ffca28,
+        #ff7043
+    );
+
+    color: #222;
+
+    border-radius: 25px;
+
+    box-shadow:
+        0 0 30px rgba(255,255,255,0.8),
+        0 0 80px rgba(255,193,7,0.8);
+
+    animation: celebrationBox 0.8s ease;
+}
+
+
+.big-donkey {
+    font-size: 85px;
+
+    animation:
+        donkeyJump 0.7s infinite alternate,
+        donkeyRotate 2s infinite linear;
+}
+
+
+.celebration-box h2 {
+    font-size: 35px;
+
+    margin: 5px 0;
+}
+
+.celebration-box h3 {
+    font-size: 32px;
+
+    margin: 8px 0 15px;
+}
+
+.celebration-box p {
+    font-size: 18px;
+
+    font-weight: bold;
+}
+
+
+.celebration-donkeys {
+    font-size: 42px;
+
+    margin: 20px 0;
+
+    animation: donkeyWave 0.7s infinite alternate;
+}
+
+
+#playAgainBtn {
+    background: #222;
+
+    color: white;
+
+    padding: 13px 25px;
+
+    font-size: 16px;
+
+    border-radius: 10px;
+}
+
+
+/* =================================
+   DONKEY POPUPS
+================================= */
+
+.donkey-popup {
+    position: fixed;
+
+    z-index: 1100;
+
+    font-size: 55px;
+
+    pointer-events: none;
+
+    animation: donkeyFly 2.5s ease-out forwards;
+}
+
+
+/* =================================
+   CONFETTI
+================================= */
+
+.confetti-piece {
+    position: fixed;
+
+    top: -20px;
+
+    z-index: 1050;
+
+    width: 10px;
+    height: 18px;
+
+    pointer-events: none;
+
+    animation: confettiFall 3s linear forwards;
+}
+
+
+/* =================================
+   ANIMATIONS
+================================= */
+
+@keyframes celebrationAppear {
+
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+
+}
+
+
+@keyframes celebrationBox {
+
+    from {
+        transform: scale(0.4) rotate(-8deg);
+        opacity: 0;
+    }
+
+    to {
+        transform: scale(1) rotate(0);
+        opacity: 1;
+    }
+
+}
+
+
+@keyframes donkeyJump {
+
+    from {
+        transform: translateY(0);
+    }
+
+    to {
+        transform: translateY(-18px);
+    }
+
+}
+
+
+@keyframes donkeyRotate {
+
+    0% {
+        rotate: -5deg;
+    }
+
+    50% {
+        rotate: 5deg;
+    }
+
+    100% {
+        rotate: -5deg;
+    }
+
+}
+
+
+@keyframes donkeyWave {
+
+    from {
+        transform: scale(1);
+    }
+
+    to {
+        transform: scale(1.15);
+    }
+
+}
+
+
+@keyframes donkeyFly {
+
+    0% {
+        transform: translate(0, 0) rotate(0deg) scale(0.5);
+        opacity: 0;
+    }
+
+    15% {
+        opacity: 1;
+    }
+
+    100% {
+        transform:
+            translate(
+                var(--moveX),
+                var(--moveY)
+            )
+            rotate(720deg)
+            scale(1.2);
+
+        opacity: 0;
+    }
+
+}
+
+
+@keyframes confettiFall {
+
+    0% {
+        transform:
+            translateY(-20px)
+            rotate(0deg);
+    }
+
+    100% {
+        transform:
+            translateY(110vh)
+            rotate(720deg);
+    }
+
+}
+
+
+/* MOBILE */
+
+@media (max-width: 600px) {
+
+    body {
+        padding: 7px;
+    }
+
+    .container {
+        padding: 12px;
+    }
+
+    h1 {
+        font-size: 23px;
+    }
+
+    .controls {
+        flex-direction: column;
+    }
+
+    .file-box {
+        width: 100%;
+    }
+
+    select,
+    .controls button {
+        width: 100%;
+    }
+
+    .stats {
+        gap: 5px;
+    }
+
+    .stats div {
+        min-width: 75px;
+    }
+
+    #puzzle {
+        width: 94vw;
+    }
+
+    .celebration-box h2 {
+        font-size: 27px;
+    }
+
+    .celebration-box h3 {
+        font-size: 25px;
+    }
+
+    .big-donkey {
+        font-size: 70px;
+    }
+
+    .celebration-donkeys {
+        font-size: 32px;
+    }
+}
